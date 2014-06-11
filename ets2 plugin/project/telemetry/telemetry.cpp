@@ -14,7 +14,6 @@
 #include <assert.h>
 #include <stdarg.h>
 
-
 // SDK
 
 #include "scssdk_telemetry.h"
@@ -22,6 +21,10 @@
 #include "eurotrucks2/scssdk_telemetry_eut2.h"
 
 #define UNUSED(x)
+
+// Ethercat for PLC comminunication
+
+#include "EthercatIo.h"
 
 /**
  * @brief Tracking of paused state of the game.
@@ -56,13 +59,24 @@ struct telemetry_state_t
 } telemetry;
 
 /**
- * @brief Function writting message to the game internal log.
+ * @brief Function writing message to the game internal log.
  */
 scs_log_t game_log = NULL;
 
 /**
-* @brief Sends telemetry data to the UDP socket as CSV
+* @brief EthercatIO object
 */
+EthercatIo eth;
+
+/**
+* @brief Data to send to the PLC
+*/
+float dataToPLC[3];
+
+/**
+* @brief Frame counter to limit the sending of data to PLC
+*/
+int frames;
 
 
 
@@ -107,6 +121,14 @@ SCSAPI_VOID telemetry_frame_end(const scs_event_t UNUSED(event), const void *con
 		return;
 	}
 
+	frames++;
+	if (frames == 10) {
+		frames = 0;
+		dataToPLC[0] = telemetry.accelX;
+		dataToPLC[1] = telemetry.accelY;
+		dataToPLC[2] = telemetry.accelZ;
+	}
+
 	// This is were you do the things you want with the telemetry
 }
 
@@ -119,6 +141,8 @@ SCSAPI_VOID telemetry_configuration(const scs_event_t event, const void *const e
 {
 	// It's possible to init stuff here
 	
+	eth = EthercatIo();
+	frames = 0;
 }
 
 // Handling of individual channels.
@@ -144,7 +168,6 @@ SCSAPI_VOID telemetry_store_orientation(const scs_string_t name, const scs_u32_t
 	state->roll = value->value_euler.roll * 360.0f;
 }
 
-// own test
 
 SCSAPI_VOID telemetry_store_acceleration(const scs_string_t name, const scs_u32_t index, const scs_value_t *const value, const scs_context_t context)
 {
@@ -246,6 +269,7 @@ SCSAPI_VOID scs_telemetry_shutdown(void)
 	// Any cleanup needed. The registrations will be removed automatically
 	// so there is no need to do that manually.
 
+	eth.CloseConnection();
 	game_log = NULL;
 }
 

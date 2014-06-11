@@ -92,10 +92,15 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalDependencies>C:\TwinCAT\AdsApi\TcAdsDll\Lib\TcAdsDll.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EthercatIo.cpp" />
     <ClCompile Include="telemetry.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EthercatIo.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
