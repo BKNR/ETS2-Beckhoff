@@ -66,7 +66,7 @@ scs_log_t game_log = NULL;
 /**
 * @brief EthercatIO object
 */
-EthercatIo eth;
+EthercatIo* eth = 0;
 
 /**
 * @brief Data to send to the PLC
@@ -127,6 +127,7 @@ SCSAPI_VOID telemetry_frame_end(const scs_event_t UNUSED(event), const void *con
 		dataToPLC[0] = telemetry.accelX;
 		dataToPLC[1] = telemetry.accelY;
 		dataToPLC[2] = telemetry.accelZ;
+		eth->WriteDataToPlc(dataToPLC, sizeof(dataToPLC));
 	}
 
 	// This is were you do the things you want with the telemetry
@@ -141,7 +142,7 @@ SCSAPI_VOID telemetry_configuration(const scs_event_t event, const void *const e
 {
 	// It's possible to init stuff here
 	
-	eth = EthercatIo();
+	eth = new EthercatIo();
 	frames = 0;
 }
 
@@ -269,7 +270,8 @@ SCSAPI_VOID scs_telemetry_shutdown(void)
 	// Any cleanup needed. The registrations will be removed automatically
 	// so there is no need to do that manually.
 
-	eth.CloseConnection();
+	eth->CloseConnection();
+	delete eth;
 	game_log = NULL;
 }
 
