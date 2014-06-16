@@ -3,8 +3,8 @@
 
 #include <Windows.h>
 
-#include "C:\TwinCAT\AdsApi\TcAdsDll\Include\TcAdsDef.h"
-#include "C:\TwinCAT\AdsApi\TcAdsDll\Include\TcAdsApi.h"
+#include "twincat/include/TcAdsDef.h"
+#include "twincat/include/TcAdsApi.h"
 
 class EthercatIo {
 public:
