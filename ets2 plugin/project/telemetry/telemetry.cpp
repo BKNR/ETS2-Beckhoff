@@ -71,7 +71,10 @@ EthercatIo* eth = 0;
 /**
 * @brief Data to send to the PLC
 */
-float dataToPLC[3];
+float dataToPLC[9];
+int firstInit;
+
+float minX, maxX, minY, maxY, minZ, maxZ;
 
 /**
 * @brief Frame counter to limit the sending of data to PLC
@@ -120,6 +123,30 @@ SCSAPI_VOID telemetry_frame_end(const scs_event_t UNUSED(event), const void *con
 	if (output_paused) {
 		return;
 	}
+	if (firstInit) {
+		firstInit = 0;
+		minX = maxX = telemetry.accelX;
+		minY = maxY = telemetry.accelY;
+		minX = maxX = telemetry.accelY;
+	} else {
+		if (telemetry.accelX < minX) {
+			minX = telemetry.accelX;
+		} else if (telemetry.accelX > maxX) {
+			maxX = telemetry.accelX;
+		}
+
+		if (telemetry.accelY < minY) {
+			minY = telemetry.accelY;
+		} else if (telemetry.accelY > maxY) {
+			maxY = telemetry.accelY;
+		}
+
+		if (telemetry.accelZ < minZ) {
+			minZ = telemetry.accelZ;
+		} else if (telemetry.accelZ > maxZ) {
+			maxZ = telemetry.accelZ;
+		}
+	}
 
 	frames++;
 	if (frames == 10) {
@@ -127,6 +154,13 @@ SCSAPI_VOID telemetry_frame_end(const scs_event_t UNUSED(event), const void *con
 		dataToPLC[0] = telemetry.accelX;
 		dataToPLC[1] = telemetry.accelY;
 		dataToPLC[2] = telemetry.accelZ;
+		dataToPLC[3] = minX;
+		dataToPLC[4] = maxX;
+		dataToPLC[5] = minY;
+		dataToPLC[6] = maxY;
+		dataToPLC[7] = minZ;
+		dataToPLC[8] = maxZ;
+
 		eth->WriteDataToPlc(dataToPLC, sizeof(dataToPLC));
 	}
 
@@ -144,6 +178,7 @@ SCSAPI_VOID telemetry_configuration(const scs_event_t event, const void *const e
 	
 	eth = new EthercatIo();
 	frames = 0;
+	firstInit = 1;
 }
 
 // Handling of individual channels.
