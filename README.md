@@ -1,1 +1,3 @@
-Placeholder for a readme file
+# A plugin for Euro Truck Simulator 2.
+
+A C++ plugin that uses ETS2 telemetry SDK. In current form, it sends the truck cabin linear accelerations (X, Y and Z) and their maximum and minimum values to a [Beckhoff TwinCAT 2](http://www.beckhoff.com/twincat/) logic via Automation Device Specification (ADS) functions. Also includes the used TwinCAT 2 project for the [Metropolia ambulance simulator](https://wiki.metropolia.fi/display/alykas/Ambulanssisimulaattori+-+Ambulance+Simulator) (not quite up to date).
