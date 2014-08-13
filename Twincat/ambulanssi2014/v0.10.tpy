@@ -2,9 +2,9 @@
 <!--This file is created by the TCatPlcCtrl automatically. Manually changes will be overwritten!-->
 <PlcProjectInfo xmlns:p="http://www.beckhoff.com/2002/01/TcPlcProjectDesc">
 	<ProjectInfo>
-		<Path>C:\Users\admin\Desktop\Ambulanssi\Twincat\ambulanssi2014\v0.10.pro</Path>
+		<Path>C:\Users\ambulanssi\Documents\Ambulanssi\ambulanssi2014\v0.10.pro</Path>
 		<IsLibrary>false</IsLibrary>
-		<ChangeDate>2014-06-12T14:05:44</ChangeDate>
+		<ChangeDate>2014-06-24T13:24:42</ChangeDate>
 		<Library>
 			<Name>STANDARD.LIB</Name>
 			<Path>C:\TWINCAT\PLC\LIB\STANDARD.LIB</Path>
@@ -13,20 +13,20 @@
 	</ProjectInfo>
 	<RoutingInfo>
 		<AdsInfo>
-			<NetId>10.112.98.1.1.1</NetId>
+			<NetId>10.83.86.63.1.1</NetId>
 			<Port>801</Port>
 			<TargetName>
-				<![CDATA[Target: Local (10.112.98.1.1.1), Run Time: 1]]>
+				<![CDATA[Target: Local (10.83.86.63.1.1), Run Time: 1]]>
 			</TargetName>
 		</AdsInfo>
 	</RoutingInfo>
 	<CompilerInfo>
 		<CpuFamily>x86</CpuFamily>
-		<CompilerVersion>2.9.9.41</CompilerVersion>
+		<CompilerVersion>2.9.10.0</CompilerVersion>
 		<Alignment>Byte</Alignment>
 		<PackSize>1</PackSize>
 		<TwinCATVersion>2.11.0</TwinCATVersion>
-		<TCatPlcCtrlVersion>2.11.2216</TCatPlcCtrlVersion>
+		<TCatPlcCtrlVersion>2.11.1518</TCatPlcCtrlVersion>
 	</CompilerInfo>
 	<TargetInfo>
 		<CpuFamily>x86</CpuFamily>
@@ -623,9 +623,9 @@
 	</DataTypes>
 	<Functions>
 		<Function>
-			<Name Decoration="10061859" Crc32="0343928759" LastChange="2014-06-03T12:12:22">F_AnalogOutput</Name>
+			<Name Decoration="10061859" Crc32="0343928759" LastChange="2014-06-24T09:56:42">F_AnalogOutput</Name>
 			<FunInfo>
-				<CodeIndex>52</CodeIndex>
+				<CodeIndex>51</CodeIndex>
 				<ReturnValue>
 					<Name>F_AnalogOutput</Name>
 					<Type>INT</Type>
@@ -669,6 +669,32 @@
 					<Comment>
 						<![CDATA[Maximum analog value]]>
 					</Comment>
+					<BitSize>16</BitSize>
+				</FunParameter>
+			</FunInfo>
+		</Function>
+		<Function>
+			<Name Decoration="1004D3B5" IsDefinedInLibrary="1" Library="">PRINTF</Name>
+			<FunInfo>
+				<CodeIndex>53</CodeIndex>
+				<ReturnValue>
+					<Name IsDefinedInLibrary="1" Library="">PRINTF</Name>
+					<Type Decoration="40000101">STRING(256)</Type>
+					<BitSize>2056</BitSize>
+				</ReturnValue>
+				<FunParameter>
+					<Name FunParameter="Input" IsDefinedInLibrary="1" Library="">stFormat</Name>
+					<Type Decoration="40000051">STRING(80)</Type>
+					<BitSize>648</BitSize>
+				</FunParameter>
+				<FunParameter>
+					<Name FunParameter="Input" IsDefinedInLibrary="1" Library="">dwValue</Name>
+					<Type Pointer="1">BYTE</Type>
+					<BitSize>32</BitSize>
+				</FunParameter>
+				<FunParameter>
+					<Name FunParameter="Input" IsDefinedInLibrary="1" Library="">nType</Name>
+					<Type>INT</Type>
 					<BitSize>16</BitSize>
 				</FunParameter>
 			</FunInfo>
@@ -885,9 +911,9 @@
 	</Functions>
 	<Programs>
 		<Program>
-			<Name Decoration="10071375" Crc32="4204628225" LastChange="2014-06-03T12:12:22">Calculations</Name>
+			<Name Decoration="10071375" Crc32="4204628225" LastChange="2014-06-24T09:56:42">Calculations</Name>
 			<PrgInfo>
-				<CodeIndex>50</CodeIndex>
+				<CodeIndex>49</CodeIndex>
 				<Symbol>
 					<Name>Calculations.FLcalc</Name>
 				</Symbol>
@@ -912,18 +938,18 @@
 			</PrgInfo>
 		</Program>
 		<Program>
-			<Name Decoration="10010187" Crc32="0738490389" LastChange="2014-06-12T12:53:00">Calculations_Backup</Name>
+			<Name Decoration="10010187" Crc32="2657923377" LastChange="2014-06-24T12:34:03">Calculations_Backup</Name>
 			<PrgInfo>
-				<CodeIndex>53</CodeIndex>
+				<CodeIndex>50</CodeIndex>
 				<Symbol>
 					<Name>Calculations_Backup.P</Name>
 				</Symbol>
 			</PrgInfo>
 		</Program>
 		<Program>
-			<Name Decoration="10045FB8" Crc32="0277824569" LastChange="2014-06-03T12:12:22">MAIN</Name>
+			<Name Decoration="10068F94" Crc32="1626899157" LastChange="2014-06-24T10:20:48">MAIN</Name>
 			<PrgInfo>
-				<CodeIndex>49</CodeIndex>
+				<CodeIndex>52</CodeIndex>
 				<Symbol>
 					<Name>MAIN.M0</Name>
 				</Symbol>
@@ -936,6 +962,12 @@
 				<Symbol>
 					<Name>MAIN.M3</Name>
 				</Symbol>
+				<Symbol>
+					<Name>MAIN.M4</Name>
+				</Symbol>
+				<Symbol>
+					<Name>MAIN.M5</Name>
+				</Symbol>
 			</PrgInfo>
 		</Program>
 	</Programs>
@@ -944,35 +976,49 @@
 			<Name>Calculations_Backup.P</Name>
 			<Type>BOOL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>0</IOffset>
+			<IOffset>28</IOffset>
 			<BitSize>8</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">MAIN.M0</Name>
 			<Type Decoration="100306C6">SR</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>41</IOffset>
+			<IOffset>29</IOffset>
 			<BitSize>24</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">MAIN.M1</Name>
 			<Type Decoration="100306C6">SR</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>64</IOffset>
+			<IOffset>32</IOffset>
 			<BitSize>24</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">MAIN.M2</Name>
 			<Type Decoration="100306C8">RS</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>68</IOffset>
+			<IOffset>35</IOffset>
 			<BitSize>24</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">MAIN.M3</Name>
 			<Type Decoration="100306C8">RS</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>130</IOffset>
+			<IOffset>38</IOffset>
+			<BitSize>24</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">MAIN.M4</Name>
+			<Type Decoration="100306C8">RS</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>222</IOffset>
+			<BitSize>24</BitSize>
+		</Symbol>
+		<Symbol>
+			<Name TaskPrio="1">MAIN.M5</Name>
+			<Type Decoration="100306C8">RS</Type>
+			<IGroup>16448</IGroup>
+			<IOffset>225</IOffset>
 			<BitSize>24</BitSize>
 		</Symbol>
 		<Symbol>
@@ -981,6 +1027,14 @@
 			<IGroup>61473</IGroup>
 			<IOffset VarConfig="Changeable">64</IOffset>
 			<BitSize>1</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 2 (EL1008)^Channel 3^Input]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
 			<Name Static="Input" TaskPrio="1">.bStandby</Name>
@@ -988,30 +1042,54 @@
 			<IGroup>61473</IGroup>
 			<IOffset VarConfig="Changeable">65</IOffset>
 			<BitSize>1</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 2 (EL1008)^Channel 4^Input]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input" TaskPrio="1">.bEmerency_Button</Name>
+			<Name Static="Input" TaskPrio="1">.bEmergencyButton</Name>
 			<Type>BOOL</Type>
 			<IGroup>61473</IGroup>
-			<IOffset VarConfig="Changeable">66</IOffset>
+			<IOffset VarConfig="Changeable">96</IOffset>
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Input" TaskPrio="1">.bEmergency_confirm</Name>
+			<Name Static="Input" TaskPrio="1">.bEmergencyConfirm</Name>
 			<Type>BOOL</Type>
 			<Comment>
 				<![CDATA[Digital outputs]]>
 			</Comment>
 			<IGroup>61473</IGroup>
-			<IOffset VarConfig="Changeable">67</IOffset>
+			<IOffset VarConfig="Changeable">97</IOffset>
 			<BitSize>1</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 2 (EL1008)^Channel 2^Input]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.bStartLight</Name>
+			<Name Static="Output" TaskPrio="1">.bStartLight</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset VarConfig="Changeable">128</IOffset>
 			<BitSize>1</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 3 (EL2008)^Channel 2^Output]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
 			<Name Static="Output">.bStopLight</Name>
@@ -1021,25 +1099,49 @@
 			<BitSize>1</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output">.bStandbyLight</Name>
+			<Name Static="Output" TaskPrio="1">.bStandbyLight</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
 			<IOffset VarConfig="Changeable">130</IOffset>
 			<BitSize>1</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 3 (EL2008)^Channel 3^Output]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output" TaskPrio="1">.bEmergency_Light</Name>
+			<Name Static="Output" TaskPrio="1">.bEmergencyLight</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
-			<IOffset VarConfig="Changeable">131</IOffset>
+			<IOffset VarConfig="Changeable">160</IOffset>
 			<BitSize>1</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 3 (EL2008)^Channel 1^Output]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
-			<Name Static="Output" TaskPrio="1">.bStartup_power</Name>
+			<Name Static="Output" TaskPrio="1">.bStartupPower</Name>
 			<Type>BOOL</Type>
 			<IGroup>61489</IGroup>
-			<IOffset VarConfig="Changeable">132</IOffset>
+			<IOffset VarConfig="Changeable">161</IOffset>
 			<BitSize>1</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 3 (EL2008)^Channel 8^Output]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
 			<Name Static="Output">.bBackup1</Name>
@@ -1102,6 +1204,14 @@
 			<IGroup>61488</IGroup>
 			<IOffset VarConfig="Changeable">0</IOffset>
 			<BitSize>16</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 5 (EL4124)^AO Output Channel 3^Analog output]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
 			<Name Static="Output" TaskPrio="1">.iCylinderFR</Name>
@@ -1109,6 +1219,14 @@
 			<IGroup>61488</IGroup>
 			<IOffset VarConfig="Changeable">2</IOffset>
 			<BitSize>16</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 5 (EL4124)^AO Output Channel 4^Analog output]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
 			<Name Static="Output" TaskPrio="1">.iCylinderBLF</Name>
@@ -1116,6 +1234,14 @@
 			<IGroup>61488</IGroup>
 			<IOffset VarConfig="Changeable">4</IOffset>
 			<BitSize>16</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 5 (EL4124)^AO Output Channel 2^Analog output]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
 			<Name Static="Output" TaskPrio="1">.iCylinderBLB</Name>
@@ -1123,6 +1249,14 @@
 			<IGroup>61488</IGroup>
 			<IOffset VarConfig="Changeable">6</IOffset>
 			<BitSize>16</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 5 (EL4124)^AO Output Channel 1^Analog output]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
 			<Name Static="Output" TaskPrio="1">.iCylinderBRF</Name>
@@ -1130,6 +1264,14 @@
 			<IGroup>61488</IGroup>
 			<IOffset VarConfig="Changeable">8</IOffset>
 			<BitSize>16</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 6 (EL4124)^AO Output Channel 1^Analog output]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
 			<Name Static="Output" TaskPrio="1">.iCylinderBRB</Name>
@@ -1137,6 +1279,14 @@
 			<IGroup>61488</IGroup>
 			<IOffset VarConfig="Changeable">10</IOffset>
 			<BitSize>16</BitSize>
+			<Properties>
+				<Property>
+					<Name>LinkedWith</Name>
+					<Value>
+						<![CDATA[TIID^Device 2 (EtherCAT)^Term 1 (EK1101)^Term 6 (EL4124)^AO Output Channel 2^Analog output]]>
+					</Value>
+				</Property>
+			</Properties>
 		</Symbol>
 		<Symbol>
 			<Name Static="Output">.iAnalogoutBackup1</Name>
@@ -1178,21 +1328,21 @@ BLB		|		rear				|	BRB
 				<![CDATA[From Game]]>
 			</Comment>
 			<IGroup>16448</IGroup>
-			<IOffset>133</IOffset>
+			<IOffset>79</IOffset>
 			<BitSize>288</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.LatAcc</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>114</IOffset>
+			<IOffset>115</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.LongAcc</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>118</IOffset>
+			<IOffset>119</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
@@ -1202,28 +1352,28 @@ BLB		|		rear				|	BRB
 				<![CDATA[Not presently used]]>
 			</Comment>
 			<IGroup>16448</IGroup>
-			<IOffset>175</IOffset>
+			<IOffset>123</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.Pitch</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>122</IOffset>
+			<IOffset>127</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.Roll</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>126</IOffset>
+			<IOffset>131</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.Speed</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>179</IOffset>
+			<IOffset>135</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
@@ -1233,42 +1383,42 @@ BLB		|		rear				|	BRB
 				<![CDATA[Testing for min-max values]]>
 			</Comment>
 			<IGroup>16448</IGroup>
-			<IOffset>183</IOffset>
+			<IOffset>139</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.MaxX</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>56</IOffset>
+			<IOffset>143</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.MaxY</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>60</IOffset>
+			<IOffset>147</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.MaxZ</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>71</IOffset>
+			<IOffset>151</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.MinX</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>75</IOffset>
+			<IOffset>155</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.MinY</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>79</IOffset>
+			<IOffset>159</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
@@ -1278,140 +1428,140 @@ BLB		|		rear				|	BRB
 				<![CDATA[Kirjota jotain fiksua]]>
 			</Comment>
 			<IGroup>16448</IGroup>
-			<IOffset>169</IOffset>
+			<IOffset>163</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.rMultiplyerLatAcc</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>85</IOffset>
+			<IOffset>167</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.rMultiplyerLongAcc</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>89</IOffset>
+			<IOffset>171</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.rMultiplyerZAcc</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>93</IOffset>
+			<IOffset>175</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name>.rMultiplyerForce</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>97</IOffset>
+			<IOffset>179</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name>.rForceDirection</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>101</IOffset>
+			<IOffset>183</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.rCylinderFLCalc</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>105</IOffset>
+			<IOffset>187</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.rCylinderFRCalc</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>109</IOffset>
+			<IOffset>191</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.rCylinderBLFCalc</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>234</IOffset>
+			<IOffset>195</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.rCylinderBLBCalc</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>238</IOffset>
+			<IOffset>199</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.rCylinderBRFCalc</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>242</IOffset>
+			<IOffset>203</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name TaskPrio="1">.rCylinderBRBCalc</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>246</IOffset>
+			<IOffset>207</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name>.bEmergyStop_OK</Name>
 			<Type>BOOL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>113</IOffset>
+			<IOffset>211</IOffset>
 			<BitSize>8</BitSize>
 		</Symbol>
 		<Symbol>
 			<Name>.rpi</Name>
 			<Type>REAL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>250</IOffset>
+			<IOffset>212</IOffset>
 			<BitSize>32</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name TaskPrio="1">.bEmergency_valvomo</Name>
+			<Name TaskPrio="1">.bEmergencyValvomo</Name>
 			<Type>BOOL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>254</IOffset>
+			<IOffset>216</IOffset>
 			<BitSize>8</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name TaskPrio="1">.bStandby_Valvomo</Name>
+			<Name TaskPrio="1">.bStandbyValvomo</Name>
 			<Type>BOOL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>255</IOffset>
+			<IOffset>217</IOffset>
 			<BitSize>8</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name TaskPrio="1">.bStandby_internal</Name>
+			<Name TaskPrio="1">.bStandbyInternal</Name>
 			<Type>BOOL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>256</IOffset>
+			<IOffset>218</IOffset>
 			<BitSize>8</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name TaskPrio="1">.bStart_Valvomo</Name>
+			<Name TaskPrio="1">.bStartValvomo</Name>
 			<Type>BOOL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>257</IOffset>
+			<IOffset>219</IOffset>
 			<BitSize>8</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name TaskPrio="1">.bStart_Internal</Name>
+			<Name TaskPrio="1">.bStartInternal</Name>
 			<Type>BOOL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>258</IOffset>
+			<IOffset>220</IOffset>
 			<BitSize>8</BitSize>
 		</Symbol>
 		<Symbol>
-			<Name TaskPrio="1">.bEmergency_Feedback</Name>
+			<Name TaskPrio="1">.bEmergencyFeedback</Name>
 			<Type>BOOL</Type>
 			<IGroup>16448</IGroup>
-			<IOffset>67</IOffset>
+			<IOffset>221</IOffset>
 			<BitSize>8</BitSize>
 		</Symbol>
 	</Symbols>
